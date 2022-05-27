@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class StringTest {
+
     @Test
     void replace() {
         String actual = "abc".replace("b", "d");
@@ -28,7 +29,7 @@ public class StringTest {
     @Test
     void substring() {
         String string = "(1,2)";
-        String actual = string.substring(1,string.length() - 1);
+        String actual = string.substring(1, string.length() - 1);
         assertThat(actual).isEqualTo("1,2");
     }
 
@@ -37,8 +38,8 @@ public class StringTest {
     void charAt() {
         String string = "abc";
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class)
-                .isThrownBy(() ->
-                    string.charAt(3)
-                );
+            .isThrownBy(() ->
+                string.charAt(3)
+            );
     }
 }

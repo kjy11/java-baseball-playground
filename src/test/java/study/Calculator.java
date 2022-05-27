@@ -1,15 +1,20 @@
 package study;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
 import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Calculator {
+
     private final String ERROR_MSG = "유효하지 않은 입력입니다.";
     private OutputStream out;
 
@@ -89,10 +94,18 @@ public class Calculator {
     }
 
     private int calculate(int num1, String op, int num2) {
-        if (op.equals("+")) return num1 + num2;
-        if (op.equals("-")) return num1 - num2;
-        if (op.equals("*")) return num1 * num2;
-        if (op.equals("/")) return num1 / num2;
+        if (op.equals("+")) {
+            return num1 + num2;
+        }
+        if (op.equals("-")) {
+            return num1 - num2;
+        }
+        if (op.equals("*")) {
+            return num1 * num2;
+        }
+        if (op.equals("/")) {
+            return num1 / num2;
+        }
         throw new IllegalArgumentException();
     }
 }
