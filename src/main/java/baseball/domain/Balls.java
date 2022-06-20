@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Balls {
-    
+
     private static final int COUNT = 3;
 
     private final List<Ball> balls;
@@ -27,11 +27,10 @@ public class Balls {
 
     private BallStatus match(int index, Ball otherBall) {
         BallStatus status = BallStatus.NOTHING;
-        for (int i = 0; i < COUNT; i++) {
+        int i = 0;
+        while (i < COUNT && status.isNothing()) {
             status = match(i, index, otherBall);
-            if (!status.isNothing()) {
-                break;
-            }
+            i++;
         }
         return status;
     }

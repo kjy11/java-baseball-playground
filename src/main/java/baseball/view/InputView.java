@@ -15,12 +15,11 @@ public class InputView {
 
     public static int retryInput() {
         Scanner scanner = new Scanner(System.in);
-        while (true) {
+        int retryInt = 0;
+        while (retryInt != 1 && retryInt != 2) {
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            int retryInt = scanner.nextInt();
-            if (retryInt == 1 || retryInt == 2) {
-                return retryInt;
-            }
+            retryInt = scanner.nextInt();
         }
+        return retryInt;
     }
 }

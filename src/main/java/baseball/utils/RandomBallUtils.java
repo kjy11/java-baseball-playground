@@ -20,21 +20,18 @@ public class RandomBallUtils {
 
         while (flag) {
             randomNumber = random.nextInt(9) + 1;
-            if (isDuplicated(count, preArray, randomNumber)) {
-                continue;
-            }
-            flag = false;
+            flag = isDuplicated(count, preArray, randomNumber);
         }
         return randomNumber;
     }
 
     private static boolean isDuplicated(int count, int[] preArray, int randomNumber) {
-        for (int i = 0; i < count; i++) {
-            if (preArray[i] == randomNumber) {
-                return true;
-            }
+        boolean isDuplicated = false;
+        int i = 0;
+        while (i < count && !isDuplicated) {
+            isDuplicated = (preArray[i] == randomNumber);
+            i ++;
         }
-        return false;
+        return isDuplicated;
     }
-
 }
