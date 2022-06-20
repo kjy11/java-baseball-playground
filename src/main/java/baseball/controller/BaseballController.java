@@ -3,6 +3,7 @@ package baseball.controller;
 import baseball.domain.BallResult;
 import baseball.domain.Balls;
 import baseball.utils.RandomBallUtils;
+import baseball.view.ExceptionView;
 import baseball.view.InputView;
 import baseball.view.ResultView;
 
@@ -32,7 +33,7 @@ public class BaseballController {
             int[] input = InputView.gameInput();
             userBalls = new Balls(input[0], input[1], input[2]);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ExceptionView.exceptionView(e);
             return true;
         }
         BallResult result = answers.match(userBalls);
