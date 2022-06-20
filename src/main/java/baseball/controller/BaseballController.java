@@ -12,23 +12,32 @@ public class BaseballController {
     Balls userBalls;
 
     public void startGame() {
-        int retryInt = 1;
-        while (retryInt == 1) {
+        String retryInput = "1";
+        while (retryInput.equals("1")) {
             oneGame();
-            retryInt = InputView.retryInput();
+            retryInput = InputView.retryInput();
         }
     }
 
     public void oneGame() {
         answers = RandomBallUtils.randomBalls();
-        BallResult result = new BallResult();
+        boolean continueFlag = true;
+        while (continueFlag) {
+            continueFlag = playGame();
+        }
+    }
 
-        while (result.getStrike() < 3) {
+    private boolean playGame() {
+        try {
             int[] input = InputView.gameInput();
             userBalls = new Balls(input[0], input[1], input[2]);
-            result = answers.match(userBalls);
-            printOutput(result.getBall(), result.getStrike());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return true;
         }
+        BallResult result = answers.match(userBalls);
+        printOutput(result.getBall(), result.getStrike());
+        return result.getStrike() != Balls.COUNT;
     }
 
     private void printOutput(int ballCount, int strikeCount) {
